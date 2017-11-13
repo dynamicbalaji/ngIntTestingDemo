@@ -1,6 +1,7 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref  } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 describe('AppComponent', () => {
@@ -12,6 +13,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      // Tells angular to ignore any element/attributes that it doesn't recognize
+      // If you have a complex template, lot of child components/directives, you can avoid it easily with this,
+      // instead of declaring all those individual child components in this testing module
+      schemas: [ NO_ERRORS_SCHEMA ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

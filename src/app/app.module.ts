@@ -12,7 +12,8 @@ import { TodosComponent } from './2-todos/todos.component';
 import { UserDetailsComponent } from './3-user-details/user-details.component';
 import { VoterComponent } from './1-voter/voter.component';
 import { UsersComponent } from './users/users.component';
-import { HighlightDirective } from './highlight.directive'; 
+import { HighlightDirective } from './highlight.directive';
+import { NavComponent } from './nav/nav.component'; 
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HighlightDirective } from './highlight.directive';
     UserDetailsComponent,
     VoterComponent,
     UsersComponent,
-    HighlightDirective
+    HighlightDirective,
+    NavComponent
   ],
   imports: [
     BrowserModule,
