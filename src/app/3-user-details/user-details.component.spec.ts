@@ -37,7 +37,13 @@ describe('UserDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should navigate to users page after calling save', () => {
+    let router = TestBed.get(Router);
+    // While spying on navigate method of router, no need to do any callFake/returnValue
+    let spy = spyOn(router, 'navigate');
+
+    component.save();
+
+    expect(spy).toHaveBeenCalledWith(['users']);
   });
 });
