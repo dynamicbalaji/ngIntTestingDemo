@@ -35,7 +35,7 @@ describe('VoterComponent', () => {
 
     let de = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
 
-    expect(de.attributes['highlighted']).toBeTruthy();
+    expect(de.classes['highlighted']).toBeTruthy();
   });
 
   it('should increment total votes if I click on upvote', () => {
