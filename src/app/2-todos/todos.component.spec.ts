@@ -26,7 +26,8 @@ describe('TodosComponent', () => {
     component = fixture.componentInstance;
   });
   
-  it('should load todos from the server', () => {
+  // Test case for service calls with Observable
+  xit('should load todos from the server - Observable', () => {
     // If TodoService is given as provider in module
     let service = TestBed.get(TodoService);
     // If TodoService is given as provider in component
@@ -37,4 +38,16 @@ describe('TodosComponent', () => {
 
     expect(component.todos.length).toBe(3);
   });
+
+  // Test case for service calls with Promise - Way 1
+  it('should load todos from the server - Promise - Way 1', async(() => {
+    let service = TestBed.get(TodoService);
+    spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve( [1,2,3] ));
+    
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      expect(component.todos.length).toBe(3);
+    });
+  }));
 });
