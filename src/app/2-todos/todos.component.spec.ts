@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -40,7 +40,7 @@ describe('TodosComponent', () => {
   });
 
   // Test case for service calls with Promise - Way 1
-  it('should load todos from the server - Promise - Way 1', async(() => {
+  xit('should load todos from the server - Promise - Way 1', async(() => {
     let service = TestBed.get(TodoService);
     spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve( [1,2,3] ));
     
@@ -49,5 +49,16 @@ describe('TodosComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.todos.length).toBe(3);
     });
+  }));
+
+  // Test case for service calls with Promise - Way 2
+  it('should load todos from the server - Promise - Way 2', fakeAsync(() => {
+    let service = TestBed.get(TodoService);
+    spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve( [1,2,3] ));
+    
+    fixture.detectChanges();
+
+    tick();
+    expect(component.todos.length).toBe(3);    
   }));
 });
