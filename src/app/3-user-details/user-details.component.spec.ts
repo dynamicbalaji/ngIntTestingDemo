@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { UserDetailsComponent } from './user-details.component';
 
@@ -13,7 +13,17 @@ class RouterStub {
 }
 
 class ActivatedRouteStub {
-  params: Observable<any> = Observable.empty();
+  private subject = new Subject();
+
+  push(value) {
+    this.subject.next(value);
+  }
+
+  get params() {
+    return this.subject.asObservable();
+  }
+
+  //params: Observable<any> = Observable.empty();
 }
 
 describe('UserDetailsComponent', () => {
@@ -45,5 +55,17 @@ describe('UserDetailsComponent', () => {
     component.save();
 
     expect(spy).toHaveBeenCalledWith(['users']);
+  });
+
+  it('should navigate to not-found page if invalid user id is passed', () => {
+    let router = TestBed.get(Router);
+    // While spying on navigate method of router, no need to do any callFake/returnValue
+    let spy = spyOn(router, 'navigate');
+
+    let route: ActivatedRouteStub = TestBed.get(ActivatedRoute);
+    //route.params
+    route.push( { id: 0 } );
+
+    expect(spy).toHaveBeenCalledWith(['not-found']);
   });
 });
