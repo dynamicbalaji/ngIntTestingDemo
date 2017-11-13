@@ -1,27 +1,39 @@
 # NgIntTestingDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This project explains how to write Integration Testing suites for Angular applications.
 
-## Development server
+## Topics Covered
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+PFB the topics covered in this project:
 
-## Code scaffolding
+* Basic setup to create test cases
+* Testing Property Bindings
+* Testing Event Bindings
+* Providing dependencies
+* Getting the dependencies
+* Providing Stubs
+* Testing the Navigation
+* Dealing with Route Params
+* Testing RouterOutlet Component
+* Testing routerLink
+* Shallow Component tests
+* Testing Attribute Directives
+* Dealing with Asynchronous Operations (Promise)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Code Coverage
 
-## Build
+Use below command to check on the code coverage:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+``
+ng test --code-coverage
+``
 
-## Running unit tests
+After running this command, you will find a new folder 'coverage' will be created under project folder. Open the index.html file in that folder to see the code coverage details.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Tech Stack
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Angular CLI   - 1.5.0
+* Karma         - 1.7.0
+* Jasmine       - 2.5.53
+* Typescript    - 2.4.2
+* RxJS          - 5.5.2
